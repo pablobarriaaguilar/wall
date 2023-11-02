@@ -1,0 +1,9 @@
+
+@model Message
+
+<form asp-action="Create" asp-controller="Message" method="post">    
+<h4><label asp-for="@Model.MessageText">Post a Message</label></h4>
+<textarea class="form-control" asp-for="@Model.MessageText"></textarea>
+<span asp-validation-for="MessageText"></span>
+<button class="btn-success">Post</button>
+</form>

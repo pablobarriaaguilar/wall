@@ -1,0 +1,8 @@
+@model Comment
+
+<form asp-action="CommentCreate" asp-controller="Message" asp-route-messageId="@Model.MessageId" method="post">
+    <h4><label asp-for="CommentText">Post a Comment</label></h4>
+    <textarea class="form-control" asp-for="CommentText"></textarea>
+    <span asp-validation-for="CommentText"></span>
+    <button class="btn-primary">Send a comment</button>
+</form>

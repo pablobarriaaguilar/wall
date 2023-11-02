@@ -1,0 +1,22 @@
+
+@model MessageCommentViewModel
+@await Html.PartialAsync("_Createmessage", Model.Message)
+
+
+@foreach(MessageViewModel msj in ViewBag.ListaMensajes){
+    <h2>@msj.Usuario.FirstName @msj.Usuario.LastName creado el @msj.CreatedAt.ToString("MMM dd, yyyy") </h2>
+    <h3>@msj.MessageText </h3>
+    
+    @foreach(Comment com in  msj.Comments.OrderByDescending( c =>  c.CreatedAt)){
+        <h5>@com.Usuario.FirstName @com.Usuario.LastName @com.Message.CreatedAt.ToString("MMM dd, yyyy")</h5>
+        <h5>@com.CommentText</h5>
+    }
+Comment _comment = new Comment();
+_comment = Model.Comment;
+_comment.MessageId = msj.MessageId;
+ @await Html.PartialAsync("_Createcomment", _comment)
+
+    <h2>Post a Comment</h2>
+
+ 
+}
